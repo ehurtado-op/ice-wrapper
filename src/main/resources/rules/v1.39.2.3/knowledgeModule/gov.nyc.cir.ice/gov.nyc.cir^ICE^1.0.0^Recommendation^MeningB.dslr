@@ -68,7 +68,7 @@ rule "Mening B: Do not recommend a specific vaccine if no (valid) doses have bee
 			- a forecast for the Series has been made and a Specific Vaccine is Recommended
 			- the effective dose number in the Series is == 1
 	then
-		Unset the Recommended Vaccine for the forecast in the Series $targetSeries
+		// Unset the Recommended Vaccine for the forecast in the Series $targetSeries TODO: Volver a esto
 		Record that this Series Rule was Processed for the TargetSeries $targetSeries
        	Log that this Series Rule fired for the Series $targetSeries
 end
@@ -197,9 +197,10 @@ rule "Mening B: If the patient >= 10yrs and < 16yrs and no doses on record, reco
 		Confirm elapsed time between $birthdate and evalTime >= "10y"
 		Confirm elapsed time between $birthdate and evalTime < "16y"
 	then
-		Create a Recommendation as $recommendation with Status RecommendationStatus.CONDITIONALLY_RECOMMENDED for the Series $targetSeries
-		Set the Recommendation Reason for $recommendation to "RECOMMENDATION_REASON_CONCEPT.HIGH_RISK"
-		Include the Recommendation $recommendation for Consideration in the final Forecast of the Series
+	  // TODO: Aqui especificar si es que no es high risk o meningBSingle
+		//Create a Recommendation as $recommendation with Status RecommendationStatus.CONDITIONALLY_RECOMMENDED for the Series $targetSeries
+		//Set the Recommendation Reason for $recommendation to "RECOMMENDATION_REASON_CONCEPT.HIGH_RISK"
+		//Include the Recommendation $recommendation for Consideration in the final Forecast of the Series
 		Record that this Series Rule was Processed for the TargetSeries $targetSeries
 		Log that this Series Rule fired for the Series $targetSeries
 end

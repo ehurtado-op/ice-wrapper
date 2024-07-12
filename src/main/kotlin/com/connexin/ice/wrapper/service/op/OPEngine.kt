@@ -1,5 +1,6 @@
 package com.connexin.ice.wrapper.service.op
 
+import com.connexin.ice.wrapper.Constants
 import com.connexin.ice.wrapper.model.VaccineReport
 import com.connexin.ice.wrapper.service.AbstractEngine
 import com.connexin.ice.wrapper.service.IEngine
@@ -83,6 +84,8 @@ class OPEngine(private val kieContainer: KieContainer,
         cmds.add(CommandFactory.newSetGlobal("outputRuleName",java.lang.Boolean("true")))
         cmds.add(CommandFactory.newSetGlobal("enableUnsupportedVaccinesGroup",java.lang.Boolean("true")))
         cmds.add(CommandFactory.newSetGlobal("vaccineGroupExclusions", listOf<Any>()))
+        //cmds.add(CommandFactory.newSetGlobal("isSingleMenBIndicated", vaccineReport.flags?.get(Constants.FLAG_MENB_SINGLE) == true))
+        cmds.add(CommandFactory.newSetGlobal("isMenBHighRisk", vaccineReport.flags?.get(Constants.FLAG_MENB_HIGH_RISK) == true))
 
 
 
